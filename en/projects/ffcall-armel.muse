@@ -1,0 +1,14 @@
+* FFcall library porting to ARMel
+
+At the beginning of 2009 I started to learn lisp at regular basis (read PCL, "Programmer's guide to
+CLOS" and AMOP books). Of course, I wanted to make lisp hacking on my beloved n810 :). There was
+clisp available for maemo, but it has strong drawback: no FFI. FFI is an interface for lisp to call
+symbols from external .so libraries (FFI stands for Foreighn Function Interface, btw). All FFI
+logic is embedded in one small but complicated library called ffcall. This library implements
+several routines which can call external symbol with variable count of arguments (with information
+about result's type), make closures for routine calls and other nice stuff. The sad thing about all
+this is that ffcall was ported only to old ARMs which is ABI-incompatible with ARMel.
+
+I found log of Matthew Exon's attempt to build clisp with FFI:
+[[http://mat.exon.name/logs/clisp]]. But it was unsuccessfull. So, I decided to finish this work and
+port ffcall to n810.

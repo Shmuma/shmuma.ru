@@ -1,0 +1,7 @@
+#title Shmuma homepage
+
+* Проекты
+** Текущие
+  1. [[projects/maemo-mapper-shmuma][Доработки MaemoMapper]]
+** Архив
+  1. [[ffcall-armel][Портирование ffcall на ARMel]] -- март-апрель 2009
