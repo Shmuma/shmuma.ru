@@ -1,0 +1,24 @@
+#title Репозиторий пакетов для maemo
+
+Живет тут: http://maemo.shmuma.ru/repo/
+
+Install-файл для добавления в менеджер пакетов можно взять тут:
+http://www.gronmayer.com/it/dl.php?id=256
+
+Список основных пакетов:
+  - =maemo-mapper-shmuma= -- патченный maemo-mapper для работы с Яндекс.Картами,
+  - =clisp= -- clisp с поддержкой FFI,
+  - =nstx= -- IP-over-DNS клиент и сервер,
+  - =nethack= -- самизнаетечто,
+  - =roxterm= -- терминал,
+  - =dvtm= -- console window manager,
+  - =git= -- сборка не моя
+  - =mutt=
+  - =n810-xkb-map-shmuma= -- своя раскладка,
+  - =povray=
+  - =terminus=
+  - =frobtads=
+  - =emacs= -- сборка не моя
+  - =mpd+mpc=
+  - =ncmpc=
+  - =a2dpd=

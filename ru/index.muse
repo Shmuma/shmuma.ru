@@ -2,10 +2,11 @@
 
 * Проекты
 ** Текущие
-  1. [[projects/maemo-mapper-shmuma][Доработки MaemoMapper]]
+  1. [[maemo-mapper-shmuma][Доработки MaemoMapper]]
 ** Архив
   1. [[ffcall-armel][Портирование ffcall на ARMel]] -- март-апрель 2009
 
 
 * Всякое разное
   - [[nstx-maemo][Как настроить NSTX для Maemo]]
+  - [[maemo-repostiory][Мой репозиторий пакетов для maemo]]

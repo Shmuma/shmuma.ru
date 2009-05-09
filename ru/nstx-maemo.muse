@@ -1,7 +1,7 @@
 #title Как настроить NSTX для Maemo
 
 **Warning:** Все описанное ниже предназначенно исключительно для обучения и демонстрации. Автор не несет
-ответственности за последствия ваших действий.
+ответственности за использование этой инструкции.
 
 * Что такое NSTX
 NSTX -- это реализация протокола, позволяющего тунеллировать IP-трафик через DNS-запросы.
@@ -39,8 +39,86 @@ nstxd на машине B, преобразующий их в пакеты и о
      не обязательно должен быть статическим, dyndns.org работает
      отлично.
 
+* Обозначения
+  - =xxx.ru= -- подконтрольная зона,
+  - =tx.xxx.ru= -- зона, за которую отвечает сервер B,
+  - =b.xxx.ru= -- адрес сервера b. 
 
 * Настройка зоны и nstx сервера
 С зоной все просто: добавляем запись вида
 
-nstx.xxx.ru.	IN NS 
+=nstx.xxx.ru.	IN NS b.xxx.ru.=
+
+Далее, на сервере устанавливаем nstx (для debian такой пакет уже есть, остальным, видимо, придется
+собрать), и настраиваем его:
+
+=/etc/default/nstx=
+<example>
+# The name of the domain for the tunnel - needed for client and server
+NSTX_DOMAIN="nstx.xxx.ru"
+
+# The IP address of the DNS server - needed for client only
+NSTX_DNS_SERVER=`grep nameserver /etc/resolv.conf |head -1|awk '{print $2}'`
+
+# uncomment to start nstxd on system startup
+start_nstxd=yes
+
+# uncomment to start nstxcd on system startup
+#start_nstxcd=yes
+
+# uncomment to bring up tun0 automatically
+ifup_tun=tun1
+
+# uncomment to tell nstx to bind to a specific interface
+#NSTX_IFACE=
+</example>
+
+=/etc/network/interfaces=
+<example>
+iface tun1 inet static
+        address 10.0.0.1
+        netmask 255.255.0.0
+        tunctl_user nstxd
+        mtu 500
+</example>
+=mtu 500= обязательно, иначе большие пакеты не будут влазить в ограничения на FQDN.
+
+Помимо этого нужно чтобы пакеты с tun1 заворачивались в инет. Делается это стандартными средствами iptables/uif/что у
+вас там.
+
+* Настройка клиента
+На таблетку ставим пакет nstx из [[maemo-repostiory][моего репозитория]]. Помимо стандартных скриптов и утилит, содержат
+два скрипта =nstx-on= и =nstx-off= для включения и выключения использования nstx.
+
+В =/etc/network/interfaces=:
+<example>
+iface tun0 inet static
+        address 10.0.0.2
+        netmask 255.255.0.0
+        mtu 500
+</example>
+
+В =/etc/default/nstx= нужно указать лишь параметр =NSTX_DOMAIN=, параметр =start_nstxcd= указывать НЕ
+нужно, запускать его при загрузке нам ни разу не нужно.
+
+Собственно, все.
+
+* Использование
+Резвым галопом идем в ближайшую "Шоколадницу" или Мак или просто встаем посреди Тверской. Ловим
+=BeeLine_WiFi= или =MTS/Tascom=. От рута говорим =nstx-on=. После чего пробуем =ping www.ru=. Если вы все
+правильно сделали, должен быть инет.
+
+* Если не работает
+Если вдруг не работает, то можно проверить следующее:
+  - запускаем nstxd на компьютере B с ключом -g:
+<example>
+ /usr/sbin/nstxd -i b.xxx.ru -C /var/run/nstxd -u nstxd nstx.xxx.ru -g
+</example>
+При запущенном nstxcd на таблетке, демон nstxd должны выводить с интервалом в полсекунды небольшие DNS-запросы. При
+попытках пинга на стороне клиента, эти запросы должны перемежаться запросами большей длины (с
+данными).
+  - проверить имена tun-интерфейсов за которые зацепляются nstxd и nstxcd. При явном запуске этих демонов
+    они пишут с каким интерфейсом они работают. В соответствии с этим, скорректируйте конфиги.
+  - взять tcpdump и позырить что же не так :).
+
+
