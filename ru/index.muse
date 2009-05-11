@@ -2,11 +2,15 @@
 
 * Проекты
 ** Текущие
-  1. [[maemo-mapper-shmuma][Доработки MaemoMapper]]
+  1. [[maemo-mapper-shmuma][Maemo-Mapper с поддержкой Яндекса]]
+<comment>
+  1. [[klife][Kernel Life Game]]
+</comment>
+
 ** Архив
   1. [[ffcall-armel][Портирование ffcall на ARMel]] -- март-апрель 2009
 
 
 * Всякое разное
   - [[nstx-maemo][Как настроить NSTX для Maemo]]
-  - [[maemo-repostiory][Мой репозиторий пакетов для maemo]]
+  - [[maemo-repostiory][Репозиторий пакетов для maemo]]

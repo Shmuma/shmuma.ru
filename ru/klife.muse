@@ -1,0 +1,4 @@
+#title Kernel Life Game
+#keywords life game, kernel, linux
+
+Implementation of life game in linux kernel.
