@@ -2,3 +2,31 @@
 #keywords life game, kernel, linux
 
 Implementation of life game in linux kernel.
+
+* User interface
+We have a /proc interface which allows us:
+ - create simulations,
+ - run them in continous manner or step-by-step,
+ - examine board state,
+ - change board`s state.
+ - destroy it.
+
+** /proc interface
+Control interface lives in /proc/klife and has the following entries:
+ - =version= -- version ov module
+ - =status= -- information of currently active simulations and overral
+   module status iinformation,
+ - =boards/= -- directory with boards,
+ - =boards/create= -- control file which allows to create boards,
+ - =boards/destroy= -- control file which allows to destroy boards,
+
+Every board identified by integer number assigned sequentially on
+board's creation. It's state and control interface represented in
+=/proc/klife/boards/ID/= directory, which has the following entries:
+
+ - =field= -- ASCII representation of board`s field,
+ - =mode= -- board's mode of simulation. It can be =step= for
+   manual tracing or =run= for automatic simulation.
+ - =delay= -- interval in microseconds between board's step in =run= mode,
+ - =step= -- integer counter of board's generations passed,
+ - =status= -- overral board's status information.
