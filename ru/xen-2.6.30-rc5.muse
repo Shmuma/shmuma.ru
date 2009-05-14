@@ -1,3 +1,5 @@
+*Trouble*: XEN domU hangs with this message in =xm dmesg=:
+
 <example>
 (XEN) ----[ Xen-3.2-1  x86_32p  debug=n  Not tainted ]----
 (XEN) CPU:    0
@@ -14,3 +16,24 @@
 (XEN)    00008000 c059e000 00001000 00000800 c059e000 c03a2f54 c0345d44 00000000
 (XEN)    c0385af0 00000000 00000000 00000000 00000000 00000000 c059b000 00000000
 </example>
+
+Tried to have backtrace of this, but without success :(. But learned about [[kernel-crash-tool][crash]] utility, netherless
+it didn't help: the kernel is too fresh for it. Have an [[ideas][idea]] to patch it for 2.6.30 and port to
+ARMel.
+
+Now trying to get serial console working to get early oops (I believe this is a guest
+issue). Another approach worth trying is to bisect between 2.6.29.3 (it works ok) and 2.6.30-rc1
+(first rc not working).
+
+* Serial console in domU
+
+[[http://wiki.xensource.com/xenwiki/InstallationNotes#head-327388b324997719e864f8740fed06036c799e38][Manual]] says that serial driver in dom0 must be blacklisted and the following options put in config:
+<example>
+irq = [ 4 ] 
+ioports = [ "3f8-3ff" ]
+</example>
+
+This is confuses me slightly. Doesn't Xen provide virtualized serial ports, as it does with network
+and block devices? Maybe HVC code can handle serial ports virtualization.
+
+* 2.6.29.3 -- 2.6.30-rc1 bisection log

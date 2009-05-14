@@ -1,5 +1,7 @@
 #title MaemoMapper с поддержкой Яндекса
 
+[[maemo-mapper-shmuma-todo][TODO]]
+
 * О MaemoMapper
 
 MaemoMapper -- это навигационное приложение для maemo (операционной системы на базе GNU/Linux для

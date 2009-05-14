@@ -1,0 +1,5 @@
+#title Kernel Crash Utility
+
+Homepage: http://people.redhat.com/anderson/
+
+Nice tool to analyze different kinds of kernel dumps and cores (including Xen).

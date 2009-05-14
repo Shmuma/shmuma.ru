@@ -1,0 +1,8 @@
+#title Project ideas
+
+Here is unstructured list of different projects which (maybe) worth to deal with.
+
+* Someday/Maybe
+  - patch [[kernel-crash-tool][crash]] utility for latest kernels (at the moment, version 4.0-8.9 fails to find entry on
+    2.6.29 and later kernels).
+  - make [[kernel-crash-tool][crash]] utility to understand ARM CPU (just for fun).
