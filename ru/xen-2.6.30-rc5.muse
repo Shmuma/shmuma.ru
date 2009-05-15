@@ -1,4 +1,4 @@
-*Trouble*: XEN domU hangs with this message in =xm dmesg=:
+**Trouble**: XEN domU hangs with this message in =xm dmesg=:
 
 <example>
 (XEN) ----[ Xen-3.2-1  x86_32p  debug=n  Not tainted ]----
@@ -37,3 +37,6 @@ This is confuses me slightly. Doesn't Xen provide virtualized serial ports, as i
 and block devices? Maybe HVC code can handle serial ports virtualization.
 
 * 2.6.29.3 -- 2.6.30-rc1 bisection log
+
+Found config option which lead to crash: =CONFIG_SMP=. Next step is to bisect to find commit which
+causes this.
