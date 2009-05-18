@@ -40,3 +40,5 @@ and block devices? Maybe HVC code can handle serial ports virtualization.
 
 Found config option which lead to crash: =CONFIG_SMP=. Next step is to bisect to find commit which
 causes this.
+
+**Resolution**: After upgrade to xen 3.3.1 problem disappeared.
