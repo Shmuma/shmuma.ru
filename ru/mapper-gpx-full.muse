@@ -1,6 +1,6 @@
 #title Сохранение в маппере расширенного GPX
 
-All modifications live in =gpx-full= branch.
+All modifications live in [[http://github.com/Shmuma/maemo-mapper-shmuma/tree/gpx-full][gpx-full]] branch.
 
 * Core functionality
 
