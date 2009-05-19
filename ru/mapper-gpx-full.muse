@@ -1,0 +1,17 @@
+#title Сохранение в маппере расширенного GPX
+
+All modifications live in =gpx-full= branch.
+
+* Core functionality
+
+Implemented in gpx-full.{c,h}, which export three routines:
+  - =gpx_full_initialize= -- opens new file according to template and
+    given path (it always creates fresh file) and writes header to it.
+  - =gpx_full_append= -- appends new data portion from gps, including
+    lat/lon, altitude, time, hdop, pdop, vdop and satellites
+    used. Every ten data points it writes finalization tags and
+    flushes file to prevent data corruption. It adjust file position
+    to overwrite these closing tags when next data will come.
+  - =gpx_full_finalize= -- writes finalization tags and closes file.
+
+[[mapper/gpx-full-sample.gpx][Sample file]]
