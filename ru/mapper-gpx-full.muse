@@ -15,3 +15,11 @@ Implemented in gpx-full.{c,h}, which export three routines:
   - =gpx_full_finalize= -- writes finalization tags and closes file.
 
 [[mapper/gpx-full-sample.gpx][Sample file]]
+
+* Settings
+
+There are two options in separate options page:
+  - enable/disable full gpx save,
+  - directory to store gpx files to.
+
+All settings saved in gconf.
