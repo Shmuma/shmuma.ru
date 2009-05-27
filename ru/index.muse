@@ -3,6 +3,7 @@
 * Проекты
 ** Текущие
   1. [[maemo-mapper-shmuma][Maemo-Mapper с поддержкой Яндекса]]
+  1. [[open-mapper.muse][Open Mapper]]
 <comment>
   1. [[klife][Kernel Life Game]]
 </comment>

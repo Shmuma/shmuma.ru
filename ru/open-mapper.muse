@@ -1,0 +1,19 @@
+#title Open Mapper
+
+* OpenMapper dependencies
+
+Here are dependencies for open-mapper
+
+ 1. HTTP
+   - drakma (removed :nodelay option from request.lisp)
+   - cl+ssl
+   - flexi-streams
+   - trivial-gray-streams
+   - babel
+   - alexandria
+   - trivial-features
+   - usocket
+   - split-sequence
+   - chunga
+   - cl-base64
+   - puri
