@@ -1,0 +1,28 @@
+Index: xcscope.el
+===================================================================
+--- xcscope.el	(revision 2204)
++++ xcscope.el	(working copy)
+@@ -777,6 +777,14 @@
+   :group 'cscope)
+ 
+ 
++(defcustom cscope-use-inverse-index nil
++  "*If non-nil say cscope program to use inverse index if present. It can be
++created using -q option and significantly speeds up search in large
++projects."
++  :type 'boolean
++  :group 'cscope)
++
++
+ (defcustom cscope-no-mouse-prompts nil
+   "*If non-nil, use the symbol under the cursor instead of prompting.
+ Do not prompt for a value, except for when seaching for a egrep pattern
+@@ -1909,6 +1917,8 @@
+       (catch 'finished
+ 	(set-buffer outbuf)
+ 	(setq options '("-L"))
++        (if cscope-use-inverse-index
++            (setq options (append options '("-q"))))
+ 	(while (and (not done) cscope-search-list)
+ 	  (setq next-item (car cscope-search-list)
+ 		cscope-search-list (cdr cscope-search-list)
