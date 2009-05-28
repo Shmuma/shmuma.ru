@@ -22,3 +22,4 @@ http://www.gronmayer.com/it/dl.php?id=256
   - =mpd+mpc=
   - =ncmpc=
   - =a2dpd=
+  - =cscope=
