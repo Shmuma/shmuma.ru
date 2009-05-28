@@ -1,0 +1,24 @@
+#title cscope notes
+
+Homepage: http://cscope.sourceforge.net/
+
+* Kernel source files build cscript
+
+Prepares list of source files in current dir and all subdirs. Excludes
+all drivers and architectures dirs except x86.
+
+<example>
+#!/bin/sh
+
+find . \( \( -path ./arch -o -path ./drivers \) -prune \) -o \( \( -iname '*.h' -o -iname '*.c' \) -print \) > cscope.files
+find arch/x86 -iname '*.h' -o -iname '*.c' >> cscope.files
+</example>
+
+To build cscope indexes this command must be run after files list
+preparation =cscope -q -k -b=
+
+* Inverse index in xcscope
+
+Xcscope (emacs module for cscope) version 0.96 doesn't support inverse
+index, which is absolutely required when you plat to mess with kernel
+source tree. I've done [[xcscope-inv-index.patch][a patch]] which fixes that

@@ -16,4 +16,4 @@
   - [[nstx-maemo][Как настроить NSTX для Maemo]]
   - [[maemo-repostiory][Репозиторий пакетов для maemo]]
   - [[xen-2.6.30-rc5][xen-2.6.30-rc5]]
-  - [[xcscope-inverse-index][Inverse index in xcscope.el]]
+  - [[cscope][Заметки про cscope]]

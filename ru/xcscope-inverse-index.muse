@@ -1,5 +1,0 @@
-#title Xcscope inverse index option
-
-Xcscope (emacs module for [[http://cscope.sourceforge.net/][cscope]]) version 0.96 doesn't support inverse
-index, which is absolutely required when you plat to mess with kernel
-source tree. I've done [[xcscope-inv-index.patch][a patch]] which fixes that
