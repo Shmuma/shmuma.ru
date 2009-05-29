@@ -17,3 +17,4 @@
   - [[maemo-repostiory][Репозиторий пакетов для maemo]]
   - [[xen-2.6.30-rc5][xen-2.6.30-rc5]]
   - [[cscope][Заметки про cscope]]
+  - [[n810-kbd-layout-shmuma][Собственная раскладка n810]]

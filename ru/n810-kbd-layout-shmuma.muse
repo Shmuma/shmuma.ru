@@ -1,0 +1,31 @@
+#title Раскладка n810, shmuma edition
+
+Я очень часто использую n810 для программирования и удаленного
+администрирования (да, вот такой я грязный извращенец). В дефолтной
+раскладке отсутствуют некоторые символы (например, пайп), а некоторые
+набираются слишком сложно (фигурные скобки, квадратные скобки, слэши,
+и т.д.). Так появилась собственная раскладка.
+
+<comment>
+It's not a secret that I mainly use n810 for remote adminstration and
+coding. But default layout lacks some chars (vertical bar, for
+example) and other frequently used chars are very hard to type (curly
+brakets, slash, dollar sign starts the list). So, I made my own,
+optimized layout.
+</comment>
+
+* Как установить
+
+
+Просто устанавливаем пакет =n810-xkb-map-shmuma= из
+[[maemo-repository][моего репозитория]] и перезагружаем таблетку.
+
+* Раскладка
+
+**original** || shift || fn || **new**  || shift || fn
+б        | Б     | -  | {    | <     | -  |
+ю        | Х     | ?  | }    | >     | ?  |
+х        | Х     | ъ  | pipe | $     | ]  |
+э        | Э     | ё  | /    | +     | ~  |
+ж        | Ж     | ;  | ;    | ^     | [  |
+.        | ,     | .  | .    | ,     | `  |
