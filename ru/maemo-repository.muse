@@ -6,15 +6,15 @@ Install-файл для добавления в менеджер пакетов 
 http://www.gronmayer.com/it/dl.php?id=256
 
 Список основных пакетов:
-  - =maemo-mapper-shmuma= -- патченный maemo-mapper для работы с Яндекс.Картами,
+  - =maemo-mapper-shmuma= -- [[maemo-mapper-shmuma][патченный maemo-mapper]] для работы с Яндекс.Картами,
   - =clisp= -- clisp с поддержкой FFI,
-  - =nstx= -- IP-over-DNS клиент и сервер,
+  - =nstx= -- [[nstx-maemo][IP-over-DNS клиент и сервер]],
   - =nethack= -- самизнаетечто,
   - =roxterm= -- терминал,
   - =dvtm= -- console window manager,
   - =git= -- сборка не моя
   - =mutt=
-  - =n810-xkb-map-shmuma= -- своя раскладка,
+  - =n810-xkb-map-shmuma= -- [[n810-kbd-layout-shmuma][своя раскладка]],
   - =povray=
   - =terminus=
   - =frobtads=
