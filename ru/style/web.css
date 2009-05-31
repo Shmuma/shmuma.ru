@@ -388,3 +388,9 @@ font: 100% Verdana,Tahoma,Arial,sans-serif;
 .hide {
     display:none;
 }
+
+
+/* example class */
+.example {
+    background-color: #dedede;
+}
