@@ -1,0 +1,130 @@
+#title n810 light sensor problem under maemo-mapper
+
+[[mapper-light-sensor][Russian version]]
+
+There were a long-standing and very annoying bug with maemo-mapper: when you drive from highly
+lighted road into tunnel, n810 sets screen brightness to low level (which is good). But when you
+drive out of tunnell to lighted road again, brightness not restored. So, you cannot see anything and
+the only solution to this is to restart mapper. Very annoying.
+
+Today, I faced with such situation again and decided to resolve this completely and forever.
+
+* Investigation
+
+If you in lack of time, you can jump right to [[#solution][solution of problem]].
+
+At first, let's look at mapper's code which unblanks screen periodically:
+<example>
+#define UNBLANK_SCREEN(MOVING, APPROACHING_WAYPOINT) { \
+    /* Check if we need to unblank the screen. */ \
+    switch(_unblank_option) \
+    { \
+        case UNBLANK_NEVER: \
+            break; \
+        case UNBLANK_WAYPOINT: \
+            if(APPROACHING_WAYPOINT) \
+            { \
+                printf("Unblanking screen...\n"); \
+                osso_display_state_on(_osso); \
+                osso_display_blanking_pause(_osso);   \
+            } \
+            break; \
+        default: \
+        case UNBLANK_FULLSCREEN: \
+            if(!_fullscreen) \
+                break; \
+        case UNBLANK_WHEN_MOVING: \
+            if(!(MOVING)) \
+                break; \
+        case UNBLANK_WITH_GPS: \
+            printf("Unblanking screen...\n"); \
+            osso_display_state_on(_osso); \
+            osso_display_blanking_pause(_osso); \
+    } \
+}
+</example>
+
+The problem is probably here, I guess... There is a [[http://maemo.org/api_refs/4.0/libosso/][documentation]] on =libosso=.
+
+In another project [[https://garage.maemo.org/frs/?group_id=653&release_id=1887][autolock]] found where n810 exports light sensor value:
+=/sys/bus/i2c/devices/0-0029/lux=, in another project (=advanced-backlight=) found information about
+current screen brightness: =/sys/devices/platform/omapfb/panel/backlight_level=.
+
+Implemented a small utility which reports light sensor value and screen's brightness every second:
+<example>
+#include <libosso.h>
+
+#include <stdlib.h>
+#include <stdio.h>
+
+const char *LUX_FILE = "/sys/bus/i2c/devices/0-0029/lux";
+const char *BRI_FILE = "/sys/devices/platform/omapfb/panel/backlight_level";
+
+int get_lux(const char* file)
+{
+  int x;
+  FILE *f;
+  while(1) {
+    f = fopen(file, "r");
+    if( f ) {
+      fscanf(f, "%d", &x);
+      fclose(f);
+      break;
+    }
+    sleep(1);
+  }
+  return x;
+}
+
+
+int main ()
+{
+    osso_context_t* context;
+
+    context = osso_initialize ("light", "0.1", 0, NULL);
+
+    if (!context) {
+        printf ("Init failed\n");
+        return 1;
+    }
+
+    while (1) {
+        printf ("lux: %d\tbri: %d\n", get_lux (LUX_FILE), get_lux (BRI_FILE));
+        sleep (1);
+    }
+
+    osso_deinitialize (context);
+
+    return 0;
+}
+</example>
+Makefile:
+<example>
+light: light.c
+	gcc -o light `pkg-config --libs --cflags libosso` light.c -losso
+
+clean:
+	rm -f light
+</example>
+
+It's much simplier to experiment with this utility than with mapper itself. Using bright lamp and
+piece of paper emulate tunnel situation. All seems right here...
+
+Tried to add calls of functions which call mapper to prevent screen lock. The function
+=osso_display_state_on= reporoduces the bug. When we call it every second, light sensor values doesn't
+impact on screen brightness. Even worse: sometimes screen brightness becomes a zero for a moment
+(the same behaviour I oberved with mapper), but then restored again. 
+
+Second routine (=osso_display_blanking_pause=) works correctly. It prevents complete screen blanking,
+but doesn't prevent light sensor to change brightness. So, to resolve this problem, we just only
+need to remove call to =osso_display_state_on=.
+
+#solution
+* Solution
+
+Call to =osso_display_state_on= in macro =UNBLANK_SCREEN= makes screen brightness to change
+incorrectly. So, let's remove it out there.
+
+[[http://github.com/Shmuma/maemo-mapper-shmuma/commit/5ed06bce5200deb67ae3c3d35d6b840a119f0ac5][Commit]]
+
+Experimental build of mapper with this patch can be [[mapper/maemo-mapper-shmuma_2.6.2.4-os2008_armel.deb][obtained there]].
