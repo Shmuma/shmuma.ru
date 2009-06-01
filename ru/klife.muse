@@ -3,6 +3,8 @@
 
 Implementation of life game in linux kernel.
 
+NB: Yes, I know about [[http://www.mulix.org/klife.html][Multix's implementation]], by my is better (NIH principle, hehe).
+
 * User interface
 We have a /proc interface which allows us:
  - create simulations,
@@ -29,4 +31,20 @@ board's creation. It's state and control interface represented in
    manual tracing or =run= for automatic simulation.
  - =delay= -- interval in microseconds between board's step in =run= mode,
  - =step= -- integer counter of board's generations passed,
- - =status= -- overral board's status information.
+ - =status= -- overral board's status information,
+ - =enabled= -- 0 or 1.
+
+** Board defnition
+
+To fill board with data, you can use =/proc/klife/boards/NN/board= file (where =NN= is the board's ID). It handles the following write
+requests in text form (one per line):
+
+ - =set X Y= -- set cell (X,Y) flled,
+ - =clear X Y= -- clear cell (X,Y),
+ - =toggle X Y= -- invert cell (X,Y) state.
+
+Board is resized automatically.
+
+** Board status
+
+To obtain current state of board, just cat =/proc/klife/boards/NN/board=.
