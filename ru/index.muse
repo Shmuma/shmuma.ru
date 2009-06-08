@@ -5,9 +5,7 @@
   1. [[maemo-mapper-shmuma][Maemo-Mapper с поддержкой Яндекса]]
   1. [[open-mapper.muse][Open Mapper]]
   2. [[mapper-light-sensor][Проблема с датчиком освещения и маппером]]
-<comment>
   1. [[klife][Kernel Life Game]]
-</comment>
 
 ** Архив
   1. [[ffcall-armel][Портирование ffcall на ARMel]] -- март-апрель 2009

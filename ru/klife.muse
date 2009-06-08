@@ -3,7 +3,23 @@
 
 Implementation of life game in linux kernel.
 
+Links:
+ - Git repository: [[git://github.com/Shmuma/klife.git]]
+ - Github page: http://github.com/Shmuma/klife/
+
 NB: Yes, I know about [[http://www.mulix.org/klife.html][Multix's implementation]], by my is better (NIH principle, hehe).
+
+* Project status
+
+TODO:
+ - Board resize
+ - Timer interface
+ - Life game rules
+
+Done aka <s>finished</s>:
+ - Board memory allocation
+ - Calculation of board's size from memory allocated (integer square root using Newton's method)
+ - /proc interface
 
 * User interface
 We have a /proc interface which allows us:
@@ -48,3 +64,4 @@ Board is resized automatically.
 ** Board status
 
 To obtain current state of board, just cat =/proc/klife/boards/NN/board=.
+
