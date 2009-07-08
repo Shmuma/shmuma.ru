@@ -2,5 +2,15 @@
 
 ** Ссылки по теме
   - Git модуля: http://github.com/Shmuma/verbs/tree/master
-  - 
+  - [[http://ols.fedoraproject.org/OLS/Reprints-2005/woodruff-Reprint.pdf][Introduction to infiiniband core software]]
+  - [[http://www.afs.enea.it/asantoro/V1r1_2_1.Release_12062007.pdf][Infiniband architecture specification]]
+
+
+** Общий принцип работы
+
+В начале вызывает функция ##ib_register_client##, которая сообщает драйверам IB что мы с ними
+собираемся работать. В аргументах ей передается структура с указателями на две функции. Первая
+вызывается для каждой IB-карты в системе и подразумевает всю инифициализацию работы с этой картой,
+вторая вызывается для деинициализации.
+
 
