@@ -3,13 +3,14 @@
 * Проекты
 ** Текущие
   1. [[maemo-mapper-shmuma][Maemo-Mapper с поддержкой Яндекса]]
-  1. [[open-mapper.muse][Open Mapper]]
+  1. [[open-mapper][Open Mapper]]
   2. [[mapper-light-sensor][Проблема с датчиком освещения и маппером]]
   1. [[klife][Kernel Life Game]]
 
 ** Архив
   1. [[ffcall-armel][Портирование ffcall на ARMel]] -- март-апрель 2009
   1. [[tablix-operators][Составление расписаний дежурств операторов в ДЦ]] - февраль 2009
+  2. [[kernel-ib-verbs][Миниммальный модуль ядра использующий IB Verbs]] -- июль 2009
 
 * Всякое разное
   - [[ideas][Project ideas]]

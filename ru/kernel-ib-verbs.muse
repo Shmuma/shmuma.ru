@@ -1,0 +1,6 @@
+#title Работа с IB Verbs из ядра
+
+** Ссылки по теме
+  - Git модуля: http://github.com/Shmuma/verbs/tree/master
+  - 
+
