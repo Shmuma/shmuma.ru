@@ -28,7 +28,7 @@ storage-ноде GPFS.
   1. этот ioctl проваливается в функцию модуля mmfs ss_ioctl, затем в DiskSched::synchIO
   4. synchIO создает IOWaitQueue (cxiAllocIOWaitQueue), на которой выполняется cxiWaitIO
   5. в функции-деструкторе BIO (bioDone) написано вот что:
-<pre>
+<code>
   /* Ignore if bi_size is still non-zero */
   if (bioP->bi_size)
 #if LINUX_KERNEL_VERSION >= 2062700
@@ -36,7 +36,7 @@ storage-ноде GPFS.
 #else
     return 1;
 #endif
-</pre>
+</code>
   Именно эта проверка и срабатывает в случае md. Для обычных блочных устройств в этом поле честный
   ноль.
 
@@ -44,7 +44,7 @@ storage-ноде GPFS.
 MD/DM. Буду разбираться дальше, пока есть вот такой патч, с которым GPFS начинает нормально работать
 с MD-устройствами. Строго говоря, патч не совсем корректен, но как временное решение сойдет:
 
-<pre>
+<code>
 diff -Nru src.orig/gpl-linux/cxiIOBuffer.c src/gpl-linux/cxiIOBuffer.c
 --- src.orig/gpl-linux/cxiIOBuffer.c    2009-09-04 14:39:34.000000000 +0400
 +++ src/gpl-linux/cxiIOBuffer.c 2009-09-04 14:39:43.000000000 +0400
@@ -63,4 +63,4 @@ diff -Nru src.orig/gpl-linux/cxiIOBuffer.c src/gpl-linux/cxiIOBuffer.c
    bhcHeadP = (struct cxiBufHeadChunk_t*)bioP->bi_private;
    /* Decrement number of outstanding bios */
    /* If this is the last bio in the chunk list, enqueue the chunk list
-</pre>
+</code>
