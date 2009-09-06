@@ -25,4 +25,4 @@ http://www.gronmayer.com/it/dl.php?id=256
 
 Текстовые игры-приключения:
   - =frobtads=
-  - =instead=
+  - [[http://code.google.com/p/instead/][instead]]
