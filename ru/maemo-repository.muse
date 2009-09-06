@@ -17,9 +17,12 @@ http://www.gronmayer.com/it/dl.php?id=256
   - =n810-xkb-map-shmuma= -- [[n810-kbd-layout-shmuma][своя раскладка]],
   - =povray=
   - =terminus=
-  - =frobtads=
   - =emacs= -- сборка не моя
   - =mpd+mpc=
   - =ncmpc=
   - =a2dpd=
   - =cscope=
+
+Текстовые игры-приключения:
+  - =frobtads=
+  - =instead=
