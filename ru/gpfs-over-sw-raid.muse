@@ -100,7 +100,7 @@ diff -Nru src.orig/gpl-linux/cxiIOBuffer.c src/gpl-linux/cxiIOBuffer.c
 * Решение со стороны ядра
 
 Как и предполагалось вначале, это бага MD, связанная с тем что при вызове =bio_endio= для успешно
-завершившихся BIO, MD не обнуляет поле bi_size. Приведенный ниже патч эту беду фиксить:
+завершившихся BIO, MD не обнуляет поле bi_size. Приведенный ниже патч эту беду исправляет:
 <example>
 commit efe768b308145df0097bfea5d7afcee7e491bace
 Author: Max Lapan <max.lapan@gmail.com>
