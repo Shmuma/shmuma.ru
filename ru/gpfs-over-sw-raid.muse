@@ -70,11 +70,7 @@ NSD только среди блочных девайсов, которые вы
 
 * Решение со стороны GPFS
 
-Так как поле bi_size означает "сколько еще осталось байт обработать в этом BIO", то это бага MD/DM
-(не дурость ли вызывать функцию оповещающую о завершении BIO, не обновляя bi_size). Буду разбираться
-дальше, пока есть вот такой патч, с которым GPFS начинает нормально работать с
-MD-устройствами. Строго говоря, патч не совсем корректен, но как временное решение сойдет:
-
+Не проверять =bi_size=. Патч номер раз:
 <example>
 diff -Nru src.orig/gpl-linux/cxiIOBuffer.c src/gpl-linux/cxiIOBuffer.c
 --- src.orig/gpl-linux/cxiIOBuffer.c    2009-09-04 14:39:34.000000000 +0400
@@ -99,8 +95,7 @@ diff -Nru src.orig/gpl-linux/cxiIOBuffer.c src/gpl-linux/cxiIOBuffer.c
 
 * Решение со стороны ядра
 
-Как и предполагалось вначале, это бага MD, связанная с тем что при вызове =bio_endio= для успешно
-завершившихся BIO, MD не обнуляет поле bi_size. Приведенный ниже патч эту беду исправляет:
+MD не обнуляет поле =bi_size= перед вызовом bi_end_io. Патч номер два:
 <example>
 commit efe768b308145df0097bfea5d7afcee7e491bace
 Author: Max Lapan <max.lapan@gmail.com>
@@ -181,3 +176,9 @@ index b8a2c5d..fb9560d 100644
  		wake_up(&conf->wait_for_stripe);
  	return handled;
 </example>
+
+
+* Какое решение правильное?
+
+Nail Brown [[http://lkml.indiana.edu/hypermail/linux/kernel/0909.1/00575.html][считает]] что правильно патчить GPFS, так как bi_size в функции bi_end_io не
+определена. Думаю что он прав. В любом случае, GPFS патчить проще.
