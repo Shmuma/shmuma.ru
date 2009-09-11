@@ -86,9 +86,9 @@ MaemoMapper -- это навигационное приложение для mae
 ** Репозитории Яндекс.Карт
 
 Ниже представлены шаблоны URL дополнительных слоев, поддерживаемых maemo-mapper-shmuma:
-  - http://vec.maps.yandex.net/tiles?l=map&v=2.4.2&x=%d&y=%d&z=%d -- векторная карта (режим "Схема"
+  - http://vec.maps.yandex.net/tiles?l=map&v=2.8.1&x=%d&y=%d&z=%d -- векторная карта (режим "Схема"
     на [[http://maps.yandex.ru][maps.yandex.ru]]),
-  - http://sat.maps.yandex.net/tiles?l=sat&v=1.7.1&x=%d&y=%d&z=%d -- спутниковые снимки.
+  - http://sat.maps.yandex.net/tiles?l=sat&v=1.11.0&x=%d&y=%d&z=%d -- спутниковые снимки.
 
 Режим "Гибрид" представляет собой спутниковую карту, на которую сверху наложен дополнительный слой с
 основными улицами и названиями объектов. Как настраивать слои рассказывается ниже.
@@ -114,7 +114,7 @@ MaemoMapper -- это навигационное приложение для mae
 Шаблоны URL для поддерживаемых слоев:
 
  - http://maemo.shmuma.ru/proxy/trf.maps.yandex?x=%d&y=%d&z=%d -- слой с пробками Яндекса,
- - http://vec.maps.yandex.net/tiles?l=skl&v=2.4.2&x=%d&y=%d&z=%d -- слой с улицами и названиями
+ - http://vec.maps.yandex.net/tiles?l=skl&v=2.8.1&x=%d&y=%d&z=%d -- слой с улицами и названиями
    (гибридная карта),
  - http://mt0.google.com/mapstt?zoom=%0d&x=%d&y=%d -- слой с пробками google.
 
