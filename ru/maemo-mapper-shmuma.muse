@@ -113,7 +113,7 @@ MaemoMapper -- это навигационное приложение для mae
 
 Шаблоны URL для поддерживаемых слоев:
 
- - http://maemo.shmuma.ru/proxy/trf.maps.yandex?x=%d&y=%d&z=%d -- слой с пробками Яндекса,
+ - http://mm-proxy.appspot.com/trf.maps.yandex?x=%d&y=%d&z=%d -- слой с пробками Яндекса,
  - http://vec.maps.yandex.net/tiles?l=skl&v=2.8.1&x=%d&y=%d&z=%d -- слой с улицами и названиями
    (гибридная карта),
  - http://mt0.google.com/mapstt?zoom=%0d&x=%d&y=%d -- слой с пробками google.
