@@ -12,6 +12,9 @@
   1. [[tablix-operators][Составление расписаний дежурств операторов в ДЦ]] - февраль 2009
   2. [[kernel-ib-verbs][Минимальный модуль ядра использующий IB Verbs]] -- июль 2009
 
+** MetaTrader stuff
+  - [[mt4-sqlite][SQLite library for MetaTrader4]]
+
 * Всякое разное
   - [[ideas][Project ideas]]
   - [[nstx-maemo][Как настроить NSTX для Maemo]]
@@ -20,3 +23,4 @@
   - [[cscope][Заметки про cscope]]
   - [[n810-kbd-layout-shmuma][Собственная раскладка n810]]
   - [[gpfs-over-sw-raid][Использование софтварного RAID в GPFS]]
+

@@ -1,0 +1,31 @@
+#title SQLite for MT4
+
+Some time ago, I needed a fast and small storage for MetaTrader4 experts. CSV files are slow, binary
+files are ugly, so Idecided to create SQLite wrapper dll for MT4.
+
+* Download
+
+Latest library can be downloaded there: http://www.shmuma.ru/mt4/mt4-sqlite3_wrapper.zip
+
+* Installation
+
+  1. Unzip it,
+  2. copy sqlite3_wrapper.dll into system32 folder (or anywhere MT can find it),
+  3. copy sqlite.mqh into includes folder.
+
+* Usage
+
+There are two examples which perform schema creation, data insertion and query.
+
+Library exports six routines:
+
+  1. =int sqlite_exec (string db, string sql)= -- executes query which result we are not interested in
+(for example, create, update or delete). If database doesn't exist, it will be created. Path to
+database can be absolute or relative to the current path of program.
+  2. =int sqlite_table_exists (string db, string table)= -- returns 1 if table exists, 0 if not.
+  3. =int sqlite_query (string db, string sql, int& cols[])= -- performs query and returns integer
+handle to query results. To iterate over data, use =sqlite_next_row= and =sqlite_get_col=. To free
+results, use =sqlite_free_query=.
+  4. =int sqlite_next_row (int handle)= -- fetches next row into internal space.
+  5. =string sqlite_get_col (int handle, int col)= -- obtains column's value.
+  6. =int sqlite_free_query (int handle)= -- frees query handle.
