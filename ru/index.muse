@@ -1,4 +1,4 @@
-#title Shmuma homepage
+#title Главная
 
 * Проекты
 ** Текущие
