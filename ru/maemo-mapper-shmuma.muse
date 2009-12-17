@@ -116,7 +116,6 @@ MaemoMapper -- это навигационное приложение для mae
  - http://mm-proxy.appspot.com/trf.maps.yandex?x=%d&y=%d&z=%d -- слой с пробками Яндекса,
  - http://vec.maps.yandex.net/tiles?l=skl&v=2.8.1&x=%d&y=%d&z=%d -- слой с улицами и названиями
    (гибридная карта),
- - http://mt0.google.com/mapstt?zoom=%0d&x=%d&y=%d -- слой с пробками google.
 
 Если вы знаете другие URL слоев, пишите max.lapan@gmail.com, добавлю сюда.
 
@@ -126,7 +125,11 @@ MaemoMapper -- это навигационное приложение для mae
 #repositories
 * База репозиториев
 
- - http://mt.google.com/mt/v=w2p.87&hl=en&x=%d&y=%d&z=%d -- ландшафт
+ - http://mt.google.com/vt?z=%d&x=%d&y=%0d&hl=ru -- google street
+ - http://khm.google.com/kh/v=51&z=%d&x=%d&y=%0d -- google satellite
+ - http://mt.google.com/vt/v=w2p.115&hl=ru&z=%d&x=%d&y=%0d -- ландшафт
+ - http://mt.google.com/vt/lyrs=h@115&hl=ru&z=%d&x=%d&y=%0d -- слой дорог и населенных пунктов
+ - http://mt0.google.com/vt?lyrs=m@115,traffic&z=%d&x=%d&y=%02d&opts=T -- слой пробок
 
 #routes
 * Прокладка маршрутов
