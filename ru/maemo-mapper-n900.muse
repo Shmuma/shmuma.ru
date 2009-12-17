@@ -1,0 +1,27 @@
+#title Maemo-Mapper n900 port
+
+Status, plans and progress.
+
+Packages will be placed in this repo: http://maemo5.shmuma.ru
+
+* TODO:
+   2. Map area button to switch fullscreen on/off as in pdf viewer. n900 lacks hardware button for
+      fullscreen toggle, so it should be on screen.
+   3. Use liblocation for navigation
+   3. Zoom buttons
+   4. Make main menu n900-style
+   5. Settings dialog reorganization
+
+* Done:
+   1. Build mapper on n900
+   1. [[http://github.com/Shmuma/maemo-mapper-shmuma/commit/55c40855ec2c17dd1c53cfe2a675915e218b3a4a][Resolve inverse compass rose and scale on map]]
+
+
+* Progress
+
+**11.12.2009**: First build:
+
+[[http://img-fotki.yandex.ru/get/4002/shmuma.28/0_2f7fd_aa064aef_L.jpg]]
+
+**13.12.2009**: Compass and scale are now have normal style:
+
