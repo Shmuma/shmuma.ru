@@ -191,4 +191,47 @@ Nail Brown [[http://lkml.indiana.edu/hypermail/linux/kernel/0909.1/00575.html][�
 Теперь, проблема заключается в том, что GPFS пытается отправлять BIO размером, больше чем
 максимально поддерживаемый MD. В этом случае, в dmesg появляется ошибка "bio too big device md0 (256
 > 255)". Немного покопавшись, мы опять приходим к тому, что эту ошибку проще решить на стороне
-GPFS. Делает это [[gpfs/0001-Fix-bug-with-GPFS-over-MD-in-3.3-version.patch][следующий патч]].
+GPFS. Делает это [[gpfs/0001-Fix-bug-with-GPFS-over-MD-in-3.3-version.patch][следующий патч]]:
+
+<example>
+From b3e93f4030bc95581ada44c5fc6d8b87f41a348d Mon Sep 17 00:00:00 2001
+From: Max Lapan <max.lapan@gmail.com>
+Date: Thu, 11 Feb 2010 12:49:01 +0300
+Subject: [PATCH] Fix bug with GPFS over MD in 3.3 version.
+
+When GPFS generates BIOs for block device, it uses bio_get_nr_vecs, which returns rough estimation
+of maximum BIO size for device. Unfortunately, for MD devices, this routine returns 32 pages, but MD
+allows only 255 sectors. So, we forced to decrease max BIO for MD to 31 pages.
+
+In fact, this would be much better to resolve on MD-size, but several LKML discussions demostrates
+that this is not so simple and straightforward.
+---
+ gpl-linux/cxiIOBuffer.c |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/gpl-linux/cxiIOBuffer.c b/gpl-linux/cxiIOBuffer.c
+index 0e3eb33..cbf58a0 100644
+--- a/gpl-linux/cxiIOBuffer.c
++++ b/gpl-linux/cxiIOBuffer.c
+@@ -88,6 +88,7 @@
+ #include <linux/fs.h>
+ #include <linux/smp_lock.h>
+ #include <linux/bio.h>
++#include <linux/major.h>
+ 
+ #include <Logger-gpl.h>
+ #include <Trace.h>
+@@ -1493,6 +1494,10 @@ cxiStartIO(int ioVecSize,
+   LOGASSERT(bdevP != NULL && bdevP->bd_disk != NULL);
+   maxIOVec = bio_get_nr_vecs(bdevP); /* query max device vectors */
+ 
++  /* There is a special hack for MD */
++  if (bdevP->bd_disk->major == MD_MAJOR)
++      maxIOVec--;
++
+ #ifdef VDISK_LOOP_DEVICES
+   /* Linux can report an inaccurate value from bio_get_nr_vecs
+   *  for loop devices.  Apply necessary adjustments for experimental use. */
+-- 
+1.5.6.5
+</example>
