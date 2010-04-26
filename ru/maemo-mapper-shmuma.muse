@@ -1,6 +1,9 @@
 #title MaemoMapper с поддержкой Яндекса
 
-[[maemo-mapper-shmuma-todo][TODO]]
+Вся информация ниже относится исключительно к версии maemo-mapper-shmuma для OS2007 и
+OS2008. В n900 все мои изменения входят в [[https://garage.maemo.org/projects/maemo-mapper/][мейнстрим]]. К сожалению, версии маппера
+для n8x0 и n900 имеют существенные различия, поэтому maemo-mapper-shmuma все еще
+имеет право на жизнь.
 
 * О MaemoMapper
 

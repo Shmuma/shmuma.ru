@@ -3,8 +3,6 @@
 * Проекты
 ** Текущие
   1. [[maemo-mapper-shmuma][Maemo-Mapper с поддержкой Яндекса]]
-  2. [[maemo-mapper-n900][Maemo-Mapper port to maemo5]]
-  1. [[open-mapper][Open Mapper]]
   2. [[mapper-light-sensor][Проблема с датчиком освещения и маппером]]
   1. [[klife][Kernel Life Game]]
 
