@@ -1,15 +1,24 @@
 #title SQLite for MT4
 
 Some time ago, I needed a fast and small storage for MetaTrader4 experts. CSV files are slow, binary
-files are ugly, so Idecided to create SQLite wrapper dll for MT4.
+files are ugly, so I decided to create SQLite wrapper dll for MT4.
+
+Project GIT repository: http://github.com/Shmuma/sqlite3-mt4-wrapper
+
+* Change history
+
+  - 2010-07: fixed bug with relative pathnames
+  - 2009-10: first public release
 
 * Download
 
-Latest library can be downloaded there: http://www.shmuma.ru/mt4/mt4-sqlite3_wrapper.zip
+  - Library:
+    http://github.com/Shmuma/sqlite3-mt4-wrapper/raw/master/sqlite3_wrapper.dll
+  - Header file: http://github.com/Shmuma/sqlite3-mt4-wrapper/raw/master/sqlite.mqh
 
 * Installation
 
-  1. Unzip it,
+  1. Download it,
   2. copy sqlite3_wrapper.dll into system32 folder (or anywhere MT can find it),
   3. copy sqlite.mqh into includes folder.
 
